@@ -103,7 +103,9 @@ public class CreditCustomerService {
     @Transactional
     public CreditCustomerDetailResponse addDebt(Long customerId, CreditDebtRequest request) {
         CreditCustomer customer = getExistingCustomer(customerId);
-        customer.addTransaction(buildTransaction(CreditTransactionType.DEBT, request.amount(), request.description(), request.occurredAt()));
+        CreditTransaction debt = buildTransaction(CreditTransactionType.DEBT, request.amount(), request.description(), request.occurredAt());
+        customer.addTransaction(debt);
+        creditTransactionRepository.saveAndFlush(debt);
         refreshCustomerTotals(customer);
         return toDetail(creditCustomerRepository.saveAndFlush(customer));
     }
@@ -124,7 +126,7 @@ public class CreditCustomerService {
                 request.occurredAt()
         );
         customer.addTransaction(payment);
-        creditCustomerRepository.saveAndFlush(customer);
+        creditTransactionRepository.saveAndFlush(payment);
 
         if (payment.getId() == null) {
             throw new IllegalStateException("Odeme hareketi kimligi olusturulamadi");
