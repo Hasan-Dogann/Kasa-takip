@@ -10,7 +10,13 @@ public enum ExpenseCategory {
     KIRMIZI_ET("kirmizi_et", "Kirmizi Et"),
     MANAV("manav", "Manav"),
     PERSONEL("personel", "Personel"),
-    CAY("cay", "Cay"),
+    MARKET("market", "Market"),
+    LAVAS("lavas", "Lavas"),
+    EKMEK("ekmek", "Ekmek"),
+    KELLE("kelle", "Kelle"),
+    SU("su", "Su"),
+    AMBALAJ("ambalaj", "Ambalaj"),
+    CAY("cay", "Cay (Eski)"),
     SOGUK_MESRUBAT("soguk_mesrubat", "Soguk Mesrubat"),
     DIGER("diger", "Diger");
 
